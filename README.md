@@ -16,4 +16,4 @@ Tic Tac Toe then came to my mind as a starting point.
 
 
 - Idea for later on: adding more grid to expand the game into something like **Gobang** 
-where you connect 5 pieeces in line to win
+where you connect 5 pieces in line to win
