@@ -7,7 +7,7 @@ public class GameBoard {
     private int column;
     private char[][] board;
 
-    //putting down pieces on the board
+    //setting an empty board
     //REQUIRES: row and column are both both non negative int
     //MODIFIES:
     //EFFECTS: row and column on the game board are set to be blank
@@ -23,6 +23,7 @@ public class GameBoard {
         }
     }
 
+    //USER STORY: I want to be able to add pieces to the game board
     //putting down pieces on the board
     //REQUIRES: row and column are both non negative int
     //MODIFIES: this
