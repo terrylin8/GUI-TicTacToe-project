@@ -9,11 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 class GameBoardTest {
     private GameBoard gameBoard;
 
-//    @BeforeEach
-//    void runBefore(){
-//        gameBoard = new GameBoard(3,3);
-//    }
-
     @Test
     void testConstructor() {
         gameBoard = new GameBoard(3, 3);

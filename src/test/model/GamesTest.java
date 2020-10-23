@@ -15,7 +15,6 @@ public class GamesTest {
     @Test
     void testConstructor() {
         games = new Games();
-        assertEquals(1, games.getMatches());
         assertFalse(games.isGameOver());
     }
 
@@ -30,13 +29,4 @@ public class GamesTest {
         assertTrue(games.isGameOver());
 
     }
-
-    @Test
-    void testSetMatches(){
-        games = new Games();
-        games.setMatches(5);
-        assertEquals(5, games.getMatches());
-        assertFalse(games.isGameOver());
-    }
-
 }

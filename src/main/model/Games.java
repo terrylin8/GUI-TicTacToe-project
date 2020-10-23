@@ -8,7 +8,6 @@ public class Games {
 
     public Games() {
         gameOver = false;
-        matches = 1;
     }
 
     //USER STORY: I want to be able to restart the games, discarding all previous scores
@@ -21,11 +20,8 @@ public class Games {
         setGameOver();
     }
 
-    public void setMatches(int matches) {
-        this.matches = matches;
-    }
-
     public void setGameOver() {
+
         gameOver = true;
     }
 
@@ -33,7 +29,4 @@ public class Games {
         return gameOver;
     }
 
-    public int getMatches() {
-        return matches;
-    }
 }

@@ -45,6 +45,8 @@ public class TicTacToeApp {
     // EFFECTS: processes user command
     private void processCommand(String command) {
         if (command.equals("1")) {
+            game.gameOver = false;
+            gameBoard = new GameBoard(3, 3);
             doGame();
         } else if (command.equals("2")) {
             doGameSetting();
@@ -93,7 +95,7 @@ public class TicTacToeApp {
     }
 
     //MODIFIES: this
-    //EFFECTS: do game setting of matches or startOver
+    //EFFECTS: do game setting like startOver
     private void doGameSetting() {
         boolean keepGoing = true;
         Scanner input = new Scanner(System.in);
@@ -107,10 +109,7 @@ public class TicTacToeApp {
             if (command.equals("q")) {
                 keepGoing = false;
             } else if (command.equals("1")) {
-                Scanner matchesInput = new Scanner(System.in);
-                System.out.println("Enter how many matches you want to play");
-                int matches = matchesInput.nextInt();
-                game.setMatches(matches);
+                System.out.println("Nothing here");
             } else if (command.equals("2")) {
                 System.out.println("Scores has been reset! You can now play a new set of games");
                 game.startOver(p1, p2);
@@ -123,7 +122,7 @@ public class TicTacToeApp {
     // EFFECTS: displays menu of options for game setting to user
     private void displayGameMenu() {
         System.out.println("\nSelect from:");
-        System.out.println("\t1 -> Set number of matches");
+        System.out.println("\t1 -> Nothing for now");
         System.out.println("\t2 -> Start over with same player");
         System.out.println("\tq -> Back to main menu");
     }
@@ -140,17 +139,21 @@ public class TicTacToeApp {
     // MODIFIES: this
     // EFFECTS: Let players alternately put pieces on the game board and stop when someone has won
     private void doGame() {
-
         while (!game.gameOver) {
             displayBoard();
             makeMove(p1);
-            makeMove(p2);
-            if (winCheck(p1.getIcon())) {
+            if (winCheck(p1)) {
                 game.setGameOver();
                 p1.addScore();
-            } else if (winCheck(p2.getIcon())) {
+                System.out.println(p1.getUsername() + " you win!");
+                break;
+            }
+
+            makeMove(p2);
+            if (winCheck(p2)) {
                 game.setGameOver();
                 p2.addScore();
+                System.out.println(p2.getUsername() + " you win!");
             }
         }
     }
@@ -171,17 +174,18 @@ public class TicTacToeApp {
         gameBoard.putPiece(row, col, p.getIcon());
     }
 
-    // EFFECTS: returns true if player with the icon has won, false otherwise
-    private boolean winCheck(char icon) {
-        return (winAcross() || winVertical() || winDiagonal());
+    // EFFECTS: returns true if player with the same piece has won, false otherwise
+    private boolean winCheck(Player p) {
+        return (winAcross(p.getIcon()) || winVertical(p.getIcon()) || winDiagonal(p.getIcon()));
     }
 
     // EFFECTS: check if win condition is matched across
-    private boolean winAcross() {
+    private boolean winAcross(char icon) {
         boolean hasWon = false;
         for (int row = 0; row < gameBoard.getRow(); row++) {
             if ((gameBoard.getChar(row, 0) == gameBoard.getChar(row, 1))
-                    && (gameBoard.getChar(row, 1) == gameBoard.getChar(row, 2))) {
+                    && (gameBoard.getChar(row, 1) == gameBoard.getChar(row, 2))
+                    && (gameBoard.getChar(row, 0) == icon)) {
                 hasWon = true;
             }
         }
@@ -189,11 +193,12 @@ public class TicTacToeApp {
     }
 
     /// EFFECTS: check if win condition is matched vertically
-    private boolean winVertical() {
+    private boolean winVertical(char icon) {
         boolean hasWon = false;
         for (int col = 0; col < gameBoard.getColumn(); col++) {
             if ((gameBoard.getChar(0, col) == gameBoard.getChar(1, col))
-                    && (gameBoard.getChar(1, col) == gameBoard.getChar(2, col))) {
+                    && (gameBoard.getChar(1, col) == gameBoard.getChar(2, col))
+                    && (gameBoard.getChar(0, col) == icon)) {
                 hasWon = true;
             }
         }
@@ -201,19 +206,21 @@ public class TicTacToeApp {
     }
 
     // EFFECTS: check if win condition is matched diagonally
-    private boolean winDiagonal() {
+    private boolean winDiagonal(char icon) {
         boolean hasWon = false;
 
         // assume row = col!!!
         for (int diag = 0; (diag + 1) < gameBoard.getRow(); diag++) {
-            if (gameBoard.getChar(diag, diag) == gameBoard.getChar(diag + 1, diag + 1)) {
+            if ((gameBoard.getChar(diag, diag) == gameBoard.getChar(diag + 1, diag + 1))
+                    && (gameBoard.getChar(diag, diag) == icon)) {
                 hasWon = true;
             }
         }
         //check top right-bottom left
         for (int diag = 0; (diag + 1) < gameBoard.getRow(); diag++) {
             if (gameBoard.getChar(diag, (gameBoard.getRow()) - (diag + 1))
-                    == gameBoard.getChar(diag + 1, (gameBoard.getRow()) - ((diag + 1) + 1))) {
+                    == gameBoard.getChar(diag + 1, (gameBoard.getRow()) - ((diag + 1) + 1))
+                    && (gameBoard.getChar(diag, (gameBoard.getRow()) - (diag + 1)) == icon)) {
                 hasWon = true;
             }
         }

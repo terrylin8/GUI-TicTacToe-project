@@ -2,6 +2,7 @@ package model;
 
 import java.util.*;
 
+//creating a GameBoard with pieces on it
 public class GameBoard {
     private int row;
     private int column;
