@@ -4,7 +4,7 @@ import java.util.*;
 
 import model.*;
 
-
+//UI
 public class TicTacToeApp {
     private Player p1;
     private Player p2;
@@ -49,6 +49,9 @@ public class TicTacToeApp {
         } else if (command.equals("2")) {
             doGameSetting();
         } else if (command.equals("3")) {
+            printPlayerStatus(p1);
+            printPlayerStatus(p2);
+        } else if (command.equals("4")) {
             doIconSetting();
         } else {
             System.out.println("Invalid input!");
@@ -84,7 +87,8 @@ public class TicTacToeApp {
         System.out.println("\nSelect from:");
         System.out.println("\t1 -> Play game");
         System.out.println("\t2 -> Game setting");
-        System.out.println("\t3 -> Player icon setting");
+        System.out.println("\t3 -> Display player status");
+        System.out.println("\t4 -> Player icon setting");
         System.out.println("\tq -> quit");
     }
 
@@ -121,7 +125,7 @@ public class TicTacToeApp {
         System.out.println("\nSelect from:");
         System.out.println("\t1 -> Set number of matches");
         System.out.println("\t2 -> Start over with same player");
-        System.out.println("\tq -> quit");
+        System.out.println("\tq -> Back to main menu");
     }
 
     // Modifies: this
@@ -169,7 +173,7 @@ public class TicTacToeApp {
 
     // EFFECTS: returns true if player with the icon has won, false otherwise
     private boolean winCheck(char icon) {
-        return (winAcross() && winVertical() && winDiagonal());
+        return (winAcross() || winVertical() || winDiagonal());
     }
 
     // EFFECTS: check if win condition is matched across
@@ -216,8 +220,8 @@ public class TicTacToeApp {
         return hasWon;
     }
 
-//    //EFFECTS: print the player's current status
-//    private void printPlayerStatus(Player p) {
-//        System.out.println(p.currentStatus());
-//    }
+    //EFFECTS: print the player's current status
+    private void printPlayerStatus(Player p) {
+        System.out.println(p.currentStatus());
+    }
 }

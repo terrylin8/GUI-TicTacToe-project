@@ -1,5 +1,6 @@
 package model;
 
+// game status of the tic tac toe game
 public class Games {
 
     public int matches;

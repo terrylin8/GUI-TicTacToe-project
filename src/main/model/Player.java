@@ -1,5 +1,6 @@
 package model;
 
+//players playing the tic tac toe game
 public class Player {
     public String username;
     public char icon;
@@ -32,7 +33,7 @@ public class Player {
     //MODIFIES:
     //EFFECTS: return a string of username icon and score
     public String currentStatus() {
-        return (username + icon + " your score is: " + score);
+        return (username + ", your icon is: " + icon + ", your score is: " + score);
     }
 
     public String getUsername() {

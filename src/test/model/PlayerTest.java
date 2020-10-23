@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.TestTemplate;
 
+//test for Player
 public class PlayerTest {
     private Player player;
 
@@ -30,7 +30,7 @@ public class PlayerTest {
 
     @Test
     void testCurrentStatus() {
-        assertEquals("Tom* your score is: 0", player.currentStatus());
+        assertEquals("Tom, your icon is: *, your score is: 0", player.currentStatus());
     }
 
     @Test
