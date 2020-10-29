@@ -210,20 +210,21 @@ public class TicTacToeApp {
         boolean hasWon = false;
 
         // assume row = col!!!
-        for (int diag = 0; (diag + 1) < gameBoard.getRow(); diag++) {
-            if ((gameBoard.getChar(diag, diag) == gameBoard.getChar(diag + 1, diag + 1))
-                    && (gameBoard.getChar(diag, diag) == icon)) {
-                hasWon = true;
-            }
+
+        if ((gameBoard.getChar(0, 0) == gameBoard.getChar(1, 1))
+                && (gameBoard.getChar(1, 1) == gameBoard.getChar(2, 2))
+                && (gameBoard.getChar(1, 1) == icon)) {
+            hasWon = true;
         }
+
         //check top right-bottom left
-        for (int diag = 0; (diag + 1) < gameBoard.getRow(); diag++) {
-            if (gameBoard.getChar(diag, (gameBoard.getRow()) - (diag + 1))
-                    == gameBoard.getChar(diag + 1, (gameBoard.getRow()) - ((diag + 1) + 1))
-                    && (gameBoard.getChar(diag, (gameBoard.getRow()) - (diag + 1)) == icon)) {
-                hasWon = true;
-            }
+
+        if ((gameBoard.getChar(0, 2) == gameBoard.getChar(1, 1))
+                && (gameBoard.getChar(1, 1) == gameBoard.getChar(2, 0))
+                && (gameBoard.getChar(1, 1) == icon)) {
+            hasWon = true;
         }
+
         return hasWon;
     }
 

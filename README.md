@@ -20,7 +20,10 @@ Tic Tac Toe then came to my mind as a starting point.
   
 - As a user, I want to be able to restart the games, discarding all previous scores 
   - Games.startOver()
+  
+- As a user, I want to be able to save the current game board with pieces on it
 
+- As a user, I want to be able to reload the game board I left off 
 
 - *Extra idea for later on*: adding more grid to expand the game into something like **Gobang** 
 where you connect 5 pieces in line to win
