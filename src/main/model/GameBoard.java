@@ -1,7 +1,5 @@
 package model;
 
-import java.util.*;
-
 //creating a GameBoard with pieces on it
 public class GameBoard {
     private int row;
@@ -52,4 +50,5 @@ public class GameBoard {
     public char getChar(int row, int column) {
         return board[row][column].getIcon();
     }
+
 }

@@ -1,5 +1,6 @@
 package model;
 
+
 //pieces on GameBoard
 public class Piece {
     public char icon;

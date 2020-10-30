@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 //players playing the tic tac toe game
 public class Player {
     public String username;

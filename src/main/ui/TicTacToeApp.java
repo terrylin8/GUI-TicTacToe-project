@@ -10,6 +10,7 @@ public class TicTacToeApp {
     private Player p2;
     private Games game;
     private GameBoard gameBoard;
+    private final int SQUARE = 3;
     private Scanner input = new Scanner(System.in);
 
     // EFFECTS: runs the Tic Tac Toe app
@@ -46,7 +47,7 @@ public class TicTacToeApp {
     private void processCommand(String command) {
         if (command.equals("1")) {
             game.gameOver = false;
-            gameBoard = new GameBoard(3, 3);
+            gameBoard = new GameBoard(SQUARE, SQUARE);
             doGame();
         } else if (command.equals("2")) {
             doGameSetting();
@@ -61,7 +62,7 @@ public class TicTacToeApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes Player, Games, and gameBoard
+    // EFFECTS: initializes Player, Games, and gameBoard.json
     private void init() {
         String name1;
         String name2;
@@ -81,7 +82,7 @@ public class TicTacToeApp {
         game = new Games();
 
         //initializes game board
-        gameBoard = new GameBoard(3, 3);
+        gameBoard = new GameBoard(SQUARE, SQUARE);
     }
 
     // EFFECTS: displays menu of options to user
@@ -145,14 +146,17 @@ public class TicTacToeApp {
             if (winCheck(p1)) {
                 game.setGameOver();
                 p1.addScore();
+                displayBoard();
                 System.out.println(p1.getUsername() + " you win!");
                 break;
             }
 
+            displayBoard();
             makeMove(p2);
             if (winCheck(p2)) {
                 game.setGameOver();
                 p2.addScore();
+                displayBoard();
                 System.out.println(p2.getUsername() + " you win!");
             }
         }
@@ -160,10 +164,12 @@ public class TicTacToeApp {
 
     //EFFECTS: displays the current board, not implemented in this phase yet since no graphic approach
     private void displayBoard() {
-        System.out.println("board");
+        for (int i = 0; i < SQUARE; i++) {
+            System.out.println(gameBoard.getChar(i, 0) + "|" + gameBoard.getChar(i, 1) + "|" + gameBoard.getChar(i, 2));
+        }
     }
 
-    //EFFECTS: place the icon of player onto gameBoard at the coordinate
+    //EFFECTS: place the icon of player onto gameBoard.json at the coordinate
     private void makeMove(Player p) {
         int row;
         int col;
