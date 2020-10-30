@@ -4,12 +4,19 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
+import java.util.LinkedList;
+import java.util.List;
+
 // game status of the tic tac toe game
 public class Games implements Writable {
     private Player p1;
     private Player p2;
 
     public boolean gameOver;
+
+    public Games() {
+        gameOver = false;
+    }
 
     public Games(Player p1, Player p2) {
         this.p1 = p1;
@@ -39,6 +46,13 @@ public class Games implements Writable {
 
     public Player getP2() {
         return p2;
+    }
+
+    public List<Player> getPlayers() {
+        List<Player> players = new LinkedList<>();
+        players.add(p1);
+        players.add(p2);
+        return players;
     }
 
     public boolean isGameOver() {

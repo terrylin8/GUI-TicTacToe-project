@@ -1,0 +1,15 @@
+{
+    "Saved information of": "Game",
+    "players": [
+        {
+            "score": 0,
+            "icon": "%",
+            "username": "A"
+        },
+        {
+            "score": 10,
+            "icon": "$",
+            "username": "B"
+        }
+    ]
+}

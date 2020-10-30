@@ -33,4 +33,14 @@ public class GamesTest {
         assertTrue(games.isGameOver());
 
     }
+
+    @Test
+    void testGetPlayers() {
+        p1 = new Player("Sam", 'x', 3);
+        p2 = new Player("James", 'o', 1);
+        games = new Games(p1, p2);
+        assertEquals(p1, games.getPlayers().get(0));
+        assertEquals(p2, games.getPlayers().get(1));
+
+    }
 }
