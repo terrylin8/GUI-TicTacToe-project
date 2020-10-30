@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestTemplate;
 
 
 //test for Games
@@ -41,6 +42,14 @@ public class GamesTest {
         games = new Games(p1, p2);
         assertEquals(p1, games.getPlayers().get(0));
         assertEquals(p2, games.getPlayers().get(1));
+    }
 
+    @Test
+    void testSetGameOver(){
+        p1 = new Player("Sam", 'x', 3);
+        p2 = new Player("James", 'o', 1);
+        games = new Games(p1, p2);
+        games.setGameOver();
+        assertTrue(games.isGameOver());
     }
 }

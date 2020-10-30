@@ -51,21 +51,4 @@ public class JsonWriterTest extends JsonTest {
         }
     }
 
-    /*@Test
-    void testWriterEmptyGame() {
-        try {
-            Games game = new Games();
-            JsonWriter writer = new JsonWriter("./data/testWriterEmptyGame.json");
-            writer.open();
-            writer.write(game);
-            writer.close();
-
-            JsonReader reader = new JsonReader("./data/testWriterEmptyGame.json");
-            game = reader.read();
-            assertEquals(null, game.getP1());
-            assertEquals(null, game.getP1());
-        } catch (IOException e) {
-            fail("Exception should not have been thrown");
-        }
-    }*/
 }
