@@ -180,7 +180,9 @@ public class TicTacToeApp {
     //EFFECTS: displays the current board, not implemented in this phase yet since no graphic approach
     private void displayBoard() {
         for (int i = 0; i < ROW_COL; i++) {
-            System.out.println(gameBoard.getChar(i, 0) + "|" + gameBoard.getChar(i, 1) + "|" + gameBoard.getChar(i, 2));
+            System.out.println(gameBoard.getChar(i, 0)
+                    + "|" + gameBoard.getChar(i, 1)
+                    + "|" + gameBoard.getChar(i, 2));
         }
     }
 
