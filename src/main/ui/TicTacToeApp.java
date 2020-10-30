@@ -13,8 +13,7 @@ public class TicTacToeApp {
     private Player p2;
     private Games game;
     private GameBoard gameBoard;
-    @SuppressWarnings("CheckStyle")
-    private final int SQUARE = 3;
+    private static final int ROW_COL = 3;
     private Scanner input = new Scanner(System.in);
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -56,7 +55,7 @@ public class TicTacToeApp {
     private void processCommand(String command) {
         if (command.equals("1")) {
             game.gameOver = false;
-            gameBoard = new GameBoard(SQUARE, SQUARE);
+            gameBoard = new GameBoard(ROW_COL, ROW_COL);
             doGame();
         } else if (command.equals("2")) {
             doGameSetting();
@@ -96,7 +95,7 @@ public class TicTacToeApp {
         game = new Games(p1, p2);
 
         //initializes game board
-        gameBoard = new GameBoard(SQUARE, SQUARE);
+        gameBoard = new GameBoard(ROW_COL, ROW_COL);
     }
 
     // EFFECTS: displays menu of options to user
@@ -180,7 +179,7 @@ public class TicTacToeApp {
 
     //EFFECTS: displays the current board, not implemented in this phase yet since no graphic approach
     private void displayBoard() {
-        for (int i = 0; i < SQUARE; i++) {
+        for (int i = 0; i < ROW_COL; i++) {
             System.out.println(gameBoard.getChar(i, 0) + "|" + gameBoard.getChar(i, 1) + "|" + gameBoard.getChar(i, 2));
         }
     }
