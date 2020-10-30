@@ -30,7 +30,8 @@ public class PlayerTest {
 
     @Test
     void testCurrentStatus() {
-        assertEquals("Tom, your icon is: *, your score is: 0", player.currentStatus());
+        assertEquals("Tom, your icon is: *, your score is: 0",
+                player.currentStatus());
     }
 
     @Test
