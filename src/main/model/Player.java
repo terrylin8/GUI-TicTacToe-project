@@ -52,6 +52,7 @@ public class Player implements Writable {
     }
 
     @Override
+    // code cited from the example repo JsonSerializationDemo, Thingy toJson() method
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("username", username);

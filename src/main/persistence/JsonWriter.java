@@ -4,6 +4,7 @@ import model.Games;
 import org.json.JSONObject;
 import java.io.*;
 
+// codes below cited from the example repo JsonSerializationDemo, JsonWritter class
 // Represents a writer that writes JSON representation of workroom to file
 public class JsonWriter {
     private static final int TAB = 4;

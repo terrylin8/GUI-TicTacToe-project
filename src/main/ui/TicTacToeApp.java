@@ -13,6 +13,7 @@ public class TicTacToeApp {
     private Player p2;
     private Games game;
     private GameBoard gameBoard;
+    @SuppressWarnings("CheckStyle")
     private final int SQUARE = 3;
     private Scanner input = new Scanner(System.in);
     private JsonWriter jsonWriter;
@@ -254,6 +255,8 @@ public class TicTacToeApp {
         System.out.println(p.currentStatus());
     }
 
+    // code cited from the example repo JsonSerializationDemo, WorkRoomApp saveWorkRoom() method
+    // USER STORY: I want to be able to save the player information (name, score, icon)
     // EFFECTS: save players in Game to file
     private void saveGame() {
         try {
@@ -266,6 +269,8 @@ public class TicTacToeApp {
         }
     }
 
+    // code cited from the example repo JsonSerializationDemo, WorkRoomApp loadWorkRoom() method
+    // USER STORY: I want to be able to reload the player information stored
     // MODIFIES: this
     // EFFECTS: loads game of players from file
     private void loadGame() {

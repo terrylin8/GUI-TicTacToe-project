@@ -27,6 +27,8 @@ public class Games implements Writable {
         setGameOver();
     }
 
+    //MODIFIES: this
+    //EFFECTS: set gameOver = true when game is over
     public void setGameOver() {
         gameOver = true;
     }
@@ -44,6 +46,7 @@ public class Games implements Writable {
     }
 
     @Override
+    // code cited from the example repo JsonSerializationDemo, workroom toJson() method
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("Saved information of", "Game");
