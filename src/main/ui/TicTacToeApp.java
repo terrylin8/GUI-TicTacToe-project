@@ -62,7 +62,8 @@ public class TicTacToeApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes Player, Games, and gameBoard.json
+    // EFFECTS: initializes Player, Games, and gameBoard
+
     private void init() {
         String name1;
         String name2;
@@ -169,7 +170,7 @@ public class TicTacToeApp {
         }
     }
 
-    //EFFECTS: place the icon of player onto gameBoard.json at the coordinate
+    //EFFECTS: place the icon of player onto gameBoard at the coordinate
     private void makeMove(Player p) {
         int row;
         int col;
