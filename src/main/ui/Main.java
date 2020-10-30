@@ -1,7 +1,5 @@
 package ui;
 
-import model.GameBoard;
-
 import java.io.FileNotFoundException;
 
 //runnable application

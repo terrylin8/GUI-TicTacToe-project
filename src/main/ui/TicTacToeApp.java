@@ -7,7 +7,7 @@ import java.util.*;
 import model.*;
 import persistence.*;
 
-//UI
+//UI of tic tac toe app
 public class TicTacToeApp {
     private Player p1;
     private Player p2;
@@ -75,7 +75,6 @@ public class TicTacToeApp {
 
     // MODIFIES: this
     // EFFECTS: initializes Player, Games, and gameBoard
-
     private void init() {
         String name1;
         String name2;

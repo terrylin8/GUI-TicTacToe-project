@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 // codes below cited from the example repo JsonSerializationDemo, JsonReaderTest class
+// tests for JsonReader
 public class JsonReaderTest extends JsonTest{
     @Test
     void testReaderNonExistentFile() {

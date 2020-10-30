@@ -9,6 +9,9 @@ public class Player implements Writable {
     public char icon;
     public int score;
 
+
+    //REQUIRES: score is a non negative int
+    //EFFECTS: create a player with name, icon, and 0 or positive score
     public Player(String name, char icon, int score) {
         username = name;
         this.icon = icon;
@@ -55,6 +58,7 @@ public class Player implements Writable {
 
     @Override
     // code cited from the example repo JsonSerializationDemo, Thingy toJson() method
+    // EFFECTS: return username, icon, score of a player as json object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("username", username);

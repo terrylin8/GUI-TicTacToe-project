@@ -1,6 +1,5 @@
 package persistence;
 
-import com.sun.javafx.PlatformUtil;
 import model.*;
 
 import java.io.IOException;

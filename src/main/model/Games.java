@@ -14,10 +14,14 @@ public class Games implements Writable {
 
     public boolean gameOver;
 
+    //making a new game
+    //EFFECTS: gameOver is not false in the newly created game
     public Games() {
         gameOver = false;
     }
 
+    //making a new game
+    //EFFECTS: gameOver is not false in the newly created game with players p1 p2
     public Games(Player p1, Player p2) {
         this.p1 = p1;
         this.p2 = p2;
@@ -48,6 +52,10 @@ public class Games implements Writable {
         return p2;
     }
 
+
+    //REQUIRES:
+    //MODIFIES: this
+    //EFFECTS: make a list of players in this game
     public List<Player> getPlayers() {
         List<Player> players = new LinkedList<>();
         players.add(p1);
@@ -55,12 +63,14 @@ public class Games implements Writable {
         return players;
     }
 
+    //EFFECTS: return true if game is over, false otherwise
     public boolean isGameOver() {
         return gameOver;
     }
 
     @Override
     // code cited from the example repo JsonSerializationDemo, workroom toJson() method
+    // returns game as a JSON object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("Saved information of", "Game");
