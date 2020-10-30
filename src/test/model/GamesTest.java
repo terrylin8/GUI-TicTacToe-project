@@ -14,6 +14,12 @@ public class GamesTest {
     private Player p2;
 
     @Test
+    void testConstructorNoPara() {
+        games = new Games();
+        assertFalse(games.isGameOver());
+    }
+
+    @Test
     void testConstructor() {
         p1 = new Player("Sam", 'x', 3);
         p2 = new Player("James", 'o', 1);
