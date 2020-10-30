@@ -2,9 +2,15 @@ package ui;
 
 import model.GameBoard;
 
+import java.io.FileNotFoundException;
+
 //runnable application
 public class Main {
     public static void main(String[] args) {
-        new TicTacToeApp();
+        try {
+            new TicTacToeApp();
+        } catch (FileNotFoundException e) {
+            System.out.println("Can not find file, failed to run app");
+        }
     }
 }

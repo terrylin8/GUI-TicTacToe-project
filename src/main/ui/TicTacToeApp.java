@@ -1,8 +1,11 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 import model.*;
+import persistence.*;
 
 //UI
 public class TicTacToeApp {
@@ -12,9 +15,14 @@ public class TicTacToeApp {
     private GameBoard gameBoard;
     private final int SQUARE = 3;
     private Scanner input = new Scanner(System.in);
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private static final String JSON_STORE = "./data/player.json";
 
     // EFFECTS: runs the Tic Tac Toe app
-    public TicTacToeApp() {
+    public TicTacToeApp() throws FileNotFoundException {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runApp();
     }
 
@@ -56,6 +64,10 @@ public class TicTacToeApp {
             printPlayerStatus(p2);
         } else if (command.equals("4")) {
             doIconSetting();
+        } else if (command.equals("5")) {
+            saveGame();
+        } else if (command.equals("6")) {
+            loadGame();
         } else {
             System.out.println("Invalid input!");
         }
@@ -80,7 +92,7 @@ public class TicTacToeApp {
         p2 = new Player(name2, 'X', 0);
 
         //initializes games
-        game = new Games();
+        game = new Games(p1, p2);
 
         //initializes game board
         gameBoard = new GameBoard(SQUARE, SQUARE);
@@ -93,6 +105,8 @@ public class TicTacToeApp {
         System.out.println("\t2 -> Game setting");
         System.out.println("\t3 -> Display player status");
         System.out.println("\t4 -> Player icon setting");
+        System.out.println("\t5 -> Save player information");
+        System.out.println("\t6 -> load player information");
         System.out.println("\tq -> quit");
     }
 
@@ -114,7 +128,7 @@ public class TicTacToeApp {
                 System.out.println("Nothing here");
             } else if (command.equals("2")) {
                 System.out.println("Scores has been reset! You can now play a new set of games");
-                game.startOver(p1, p2);
+                game.startOver();
             } else {
                 System.out.println("Invalid input!");
             }
@@ -238,5 +252,30 @@ public class TicTacToeApp {
     //EFFECTS: print the player's current status
     private void printPlayerStatus(Player p) {
         System.out.println(p.currentStatus());
+    }
+
+    // EFFECTS: save players in Game to file
+    private void saveGame() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(game);
+            jsonWriter.close();
+            System.out.println("Saved player information to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads game of players from file
+    private void loadGame() {
+        try {
+            game = jsonReader.read();
+            p1 = game.getP1();
+            p2 = game.getP2();
+            System.out.println("Loaded saved player information from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 }

@@ -4,7 +4,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 //players playing the tic tac toe game
-public class Player {
+public class Player implements Writable {
     public String username;
     public char icon;
     public int score;
@@ -49,5 +49,15 @@ public class Player {
 
     public int getScore() {
         return score;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("username", username);
+        json.put("icon", Character.toString(icon));
+        json.put("score", score);
+
+        return json;
     }
 }

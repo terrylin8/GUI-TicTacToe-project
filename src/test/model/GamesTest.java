@@ -14,16 +14,20 @@ public class GamesTest {
 
     @Test
     void testConstructor() {
-        games = new Games();
+        p1 = new Player("Sam", 'x', 3);
+        p2 = new Player("James", 'o', 1);
+        games = new Games(p1, p2);
         assertFalse(games.isGameOver());
+        assertEquals("Sam", games.getP1().getUsername());
+        assertEquals("James", games.getP2().getUsername());
     }
 
     @Test
     void testStartOver() {
-        games = new Games();
-        p1 = new Player("Sam", 'x',3);
-        p2 = new Player("James", 'o',1);
-        games.startOver(p1, p2);
+        p1 = new Player("Sam", 'x', 3);
+        p2 = new Player("James", 'o', 1);
+        games = new Games(p1, p2);
+        games.startOver();
         assertEquals(0, p1.score);
         assertEquals(0, p2.score);
         assertTrue(games.isGameOver());
