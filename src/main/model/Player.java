@@ -36,7 +36,9 @@ public class Player implements Writable {
     //MODIFIES:
     //EFFECTS: return a string of username icon and score
     public String currentStatus() {
-        return (username + ", your icon is: " + icon + ", your score is: " + score);
+        return (username
+                + ", your icon is: "
+                + icon + ", your score is: " + score);
     }
 
     public String getUsername() {

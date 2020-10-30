@@ -45,7 +45,6 @@ public class JsonWriterTest extends JsonTest {
             checkPlayer(game.getPlayers().get(0),"Sam", 'x', 3);
             checkPlayer(game.getPlayers().get(1),"James", 'o', 1);
 
-
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }

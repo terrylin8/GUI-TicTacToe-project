@@ -231,7 +231,6 @@ public class TicTacToeApp {
         boolean hasWon = false;
 
         // assume row = col!!!
-
         if ((gameBoard.getChar(0, 0) == gameBoard.getChar(1, 1))
                 && (gameBoard.getChar(1, 1) == gameBoard.getChar(2, 2))
                 && (gameBoard.getChar(1, 1) == icon)) {
@@ -239,13 +238,11 @@ public class TicTacToeApp {
         }
 
         //check top right-bottom left
-
         if ((gameBoard.getChar(0, 2) == gameBoard.getChar(1, 1))
                 && (gameBoard.getChar(1, 1) == gameBoard.getChar(2, 0))
                 && (gameBoard.getChar(1, 1) == icon)) {
             hasWon = true;
         }
-
         return hasWon;
     }
 
