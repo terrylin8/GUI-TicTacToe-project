@@ -8,11 +8,11 @@ import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
+import javax.imageio.ImageIO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
 
 //GUI of tic tac toe app main menu
 public class GUI implements ActionListener {
@@ -23,7 +23,6 @@ public class GUI implements ActionListener {
     private Games game;
     private GameBoard gameBoard;
     private static final int ROW_COL = 3;
-    private Scanner input = new Scanner(System.in);
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private static final String JSON_STORE = "./data/player.json";
@@ -55,6 +54,10 @@ public class GUI implements ActionListener {
         frame.setTitle("Time to Tic Tac Toe!");
         frame.add(panel);
 
+
+//        JLabel label = new JLabel("", image, JLabel.CENTER);
+//        panel.add(label, BorderLayout.SOUTH);
+
         init();
         displayMenu();
 
@@ -66,8 +69,21 @@ public class GUI implements ActionListener {
     // MODIFIES: this
     // EFFECTS: initializes Player, Games, and gameBoard
     private void init() {
-        name1 = JOptionPane.showInputDialog("Enter name for player 1");
-        name2 = JOptionPane.showInputDialog("Enter name for player 2");
+        Icon image = new ImageIcon("./data/tictactoe.jpeg");
+        name1 = String.valueOf(JOptionPane.showInputDialog(null,
+                "Enter name for player 1",
+                "Player setting",
+                JOptionPane.INFORMATION_MESSAGE,
+                image,
+                null,
+                ""));
+        name2 = String.valueOf(JOptionPane.showInputDialog(null,
+                "Enter name for player 2",
+                "Player setting",
+                JOptionPane.INFORMATION_MESSAGE,
+                image,
+                null,
+                ""));
         //initializes players
         p1 = new Player(name1, 'O', 0);
         p2 = new Player(name2, 'X', 0);
