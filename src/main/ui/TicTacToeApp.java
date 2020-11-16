@@ -58,7 +58,8 @@ public class TicTacToeApp {
             gameBoard = new GameBoard(ROW_COL, ROW_COL);
             doGame();
         } else if (command.equals("2")) {
-            doGameSetting();
+            System.out.println("Scores has been reset! You can now play a new set of games");
+            game.startOver();
         } else if (command.equals("3")) {
             printPlayerStatus(p1);
             printPlayerStatus(p2);
@@ -101,7 +102,7 @@ public class TicTacToeApp {
     private void displayTopMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\t1 -> Play game");
-        System.out.println("\t2 -> Game setting");
+        System.out.println("\t2 -> Start over with same player");
         System.out.println("\t3 -> Display player status");
         System.out.println("\t4 -> Player icon setting");
         System.out.println("\t5 -> Save player information");
@@ -109,38 +110,38 @@ public class TicTacToeApp {
         System.out.println("\tq -> quit");
     }
 
-    //MODIFIES: this
-    //EFFECTS: do game setting like startOver
-    private void doGameSetting() {
-        boolean keepGoing = true;
-        Scanner input = new Scanner(System.in);
-        String command;
-
-        while (keepGoing) {
-            displayGameMenu();
-            command = input.next();
-            command = command.toLowerCase();
-
-            if (command.equals("q")) {
-                keepGoing = false;
-            } else if (command.equals("1")) {
-                System.out.println("Nothing here");
-            } else if (command.equals("2")) {
-                System.out.println("Scores has been reset! You can now play a new set of games");
-                game.startOver();
-            } else {
-                System.out.println("Invalid input!");
-            }
-        }
-    }
-
-    // EFFECTS: displays menu of options for game setting to user
-    private void displayGameMenu() {
-        System.out.println("\nSelect from:");
-        System.out.println("\t1 -> Nothing for now");
-        System.out.println("\t2 -> Start over with same player");
-        System.out.println("\tq -> Back to main menu");
-    }
+//    //MODIFIES: this
+//    //EFFECTS: do game setting like startOver
+//    private void doGameSetting() {
+//        boolean keepGoing = true;
+//        Scanner input = new Scanner(System.in);
+//        String command;
+//
+//        while (keepGoing) {
+//            displayGameMenu();
+//            command = input.next();
+//            command = command.toLowerCase();
+//
+//            if (command.equals("q")) {
+//                keepGoing = false;
+//            } else if (command.equals("1")) {
+//                System.out.println("Nothing here");
+//            } else if (command.equals("2")) {
+//                System.out.println("Scores has been reset! You can now play a new set of games");
+//                game.startOver();
+//            } else {
+//                System.out.println("Invalid input!");
+//            }
+//        }
+//    }
+//
+//    // EFFECTS: displays menu of options for game setting to user
+//    private void displayGameMenu() {
+//        System.out.println("\nSelect from:");
+//        System.out.println("\t1 -> Nothing for now");
+//        System.out.println("\t2 -> Start over with same player");
+//        System.out.println("\tq -> Back to main menu");
+//    }
 
     // Modifies: this
     // EFFECTS: changes the players' icons

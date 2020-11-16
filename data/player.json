@@ -2,14 +2,14 @@
     "Saved information of": "Game",
     "players": [
         {
-            "score": 1,
-            "icon": "%",
-            "username": "Terry"
+            "score": 0,
+            "icon": "$",
+            "username": "Isa"
         },
         {
-            "score": 10,
-            "icon": "*",
-            "username": "NPC"
+            "score": 0,
+            "icon": "@",
+            "username": "Terry"
         }
     ]
 }

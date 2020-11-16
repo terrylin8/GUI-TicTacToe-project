@@ -27,7 +27,7 @@ public class GameBoard {
     //putting down pieces on the board
     //REQUIRES: row and column are both non negative int
     //MODIFIES: this
-    //EFFECTS: put down the piece, which is a char, on to the board on (row, column)
+    //EFFECTS: put down the piece on to the board on (row, column)
     public void putPiece(int row, int column, char icon) {
         Piece piece = new Piece(icon);
         board[row][column] = piece;
