@@ -17,6 +17,8 @@ import java.util.Scanner;
 public class GUI implements ActionListener {
     private Player p1;
     private Player p2;
+    private String name1;
+    private String name2;
     private Games game;
     private GameBoard gameBoard;
     private static final int ROW_COL = 3;
@@ -27,9 +29,6 @@ public class GUI implements ActionListener {
 
     private JFrame frame;
     private JPanel panel;
-    private JLabel label;
-    private JTextField box1;
-    private JTextField box2;
 
     private JButton play;
     private JButton startOver;
@@ -44,10 +43,10 @@ public class GUI implements ActionListener {
         runApp();
     }
 
+
     private void runApp() {
         frame = new JFrame();
         panel = new JPanel();
-
 
         frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,24 +56,16 @@ public class GUI implements ActionListener {
         init();
         displayMenu();
 
-        panel.setLayout(new FlowLayout());
+        panel.setLayout(new GridLayout(3,2));
+       //frame.pack();
         frame.setVisible(true);
     }
 
     // MODIFIES: this
     // EFFECTS: initializes Player, Games, and gameBoard
     private void init() {
-        popup("Enter name of player 1 in box 1, name of player 2 in box 2", "Player setup");
-        String name1;
-        String name2;
-        Scanner input1 = new Scanner(System.in);
-        Scanner input2 = new Scanner(System.in);
-
-        System.out.println("Enter name of player 1");
-        name1 = input1.nextLine();
-        System.out.println("Enter name of player 2");
-        name2 = input2.nextLine();
-
+        name1 = JOptionPane.showInputDialog("Enter name for player 1");
+        name2 = JOptionPane.showInputDialog("Enter name for player 2");
         //initializes players
         p1 = new Player(name1, 'O', 0);
         p2 = new Player(name2, 'X', 0);
@@ -86,6 +77,7 @@ public class GUI implements ActionListener {
         gameBoard = new GameBoard(ROW_COL, ROW_COL);
     }
 
+    // EFFECTS: displays menu of buttons to user
     private void displayMenu() {
         panel.add(play = new JButton("Play game"));
         play.setActionCommand("play");
@@ -167,10 +159,8 @@ public class GUI implements ActionListener {
     }
 
     private void doIconSetting() {
-        System.out.println("Enter new icon for " + p1.getUsername());
-        p1.setIcon(input.next().charAt(0));
-        System.out.println("Enter new icon for " + p2.getUsername());
-        p2.setIcon(input.next().charAt(0));
+        p1.setIcon(JOptionPane.showInputDialog("Enter new icon for " + p1.getUsername()).charAt(0));
+        p2.setIcon(JOptionPane.showInputDialog("Enter new icon for " + p2.getUsername()).charAt(0));
     }
 
     //EFFECTS: print the player's current status
