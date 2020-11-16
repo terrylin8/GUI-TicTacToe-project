@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 public class Main {
     public static void main(String[] args) {
         try {
-            new TicTacToeApp();
+            new GUI();
         } catch (FileNotFoundException e) {
             System.out.println("Can not find file, failed to run app");
         }

@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+//GUI of tic tac toe app main menu
 public class GUI implements ActionListener {
     private Player p1;
     private Player p2;
@@ -37,13 +38,14 @@ public class GUI implements ActionListener {
     private JButton save;
     private JButton load;
 
+    //constructor for GUI class
     public GUI() throws FileNotFoundException {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         runApp();
     }
 
-
+    // EFFECTS: runs the Tic Tac Toe app
     private void runApp() {
         frame = new JFrame();
         panel = new JPanel();
@@ -56,8 +58,8 @@ public class GUI implements ActionListener {
         init();
         displayMenu();
 
-        panel.setLayout(new GridLayout(3,2));
-       //frame.pack();
+        panel.setLayout(new GridLayout(3, 2));
+        //frame.pack();
         frame.setVisible(true);
     }
 
@@ -88,45 +90,17 @@ public class GUI implements ActionListener {
         startOver.addActionListener(this);
 
         panel.add(display = new JButton("Display player status"));
-        display.setActionCommand("display");
-        display.addActionListener(this);
+        display.addActionListener(e -> printPlayerStatus(p1, p2));
 
         panel.add(setIcon = new JButton("Player icon setting"));
-        setIcon.setActionCommand("setIcon");
-        setIcon.addActionListener(this);
+        setIcon.addActionListener(e -> doIconSetting());
 
         panel.add(save = new JButton("Save player information"));
-        save.setActionCommand("save");
-        save.addActionListener(this);
+        save.addActionListener(e -> saveGame());
 
         panel.add(load = new JButton("Load player information"));
-        load.setActionCommand("load");
-        load.addActionListener(this);
+        load.addActionListener(e -> loadGame());
 
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()) {
-            case "startOver":
-                popup("Scores has been reset! You can now play a new set of games",
-                        "Start Over!");
-                game.startOver();
-                break;
-            case "display":
-                printPlayerStatus(p1, p2);
-                break;
-            case "setIcon":
-                doIconSetting();
-                break;
-            case "save":
-                saveGame();
-                break;
-            case "load":
-                loadGame();
-                break;
-            default:
-        }
     }
 
     // code cited from the example repo JsonSerializationDemo, WorkRoomApp saveWorkRoom() method
@@ -158,6 +132,8 @@ public class GUI implements ActionListener {
         }
     }
 
+    // Modifies: this
+    // EFFECTS: changes the players' icons
     private void doIconSetting() {
         p1.setIcon(JOptionPane.showInputDialog("Enter new icon for " + p1.getUsername()).charAt(0));
         p2.setIcon(JOptionPane.showInputDialog("Enter new icon for " + p2.getUsername()).charAt(0));
@@ -174,11 +150,22 @@ public class GUI implements ActionListener {
                 + title, JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public static void main(String[] args) {
-        try {
-            new GUI();
-        } catch (FileNotFoundException e) {
-            System.out.println("Can not find file, failed to run app");
+
+    //EFFECTS: actions performed after buttons are clicked
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        switch (e.getActionCommand()) {
+            case "play":
+                GameWindow gameWindow = new GameWindow(p1, p2, game, gameBoard);
+                game = gameWindow.getGame();
+                p1 = gameWindow.getP1();
+                p2 = gameWindow.getP2();
+                gameBoard = new GameBoard(ROW_COL, ROW_COL);
+                break;
+            case "startOver":
+                popup("Scores has been reset! You can now play a new set of games", "Start Over!");
+                game.startOver();
+                break;
         }
     }
 }
