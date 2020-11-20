@@ -15,7 +15,7 @@ public class GameWindow {
     private Games game;
     private GameBoard gameBoard;
     private static final int ROW_COL = 3;
-
+    Font font = new Font("Courier New", Font.BOLD, 25);
     JFrame frame = new JFrame();
     JPanel panel = new JPanel();
 //    JLabel label = new JLabel("Hello!");
@@ -31,6 +31,7 @@ public class GameWindow {
         frame = new JFrame();
         panel = new JPanel();
         panel.setLayout(new java.awt.GridLayout(3, 3));
+        panel.setBackground(Color.BLACK);
 
         frame.add(panel);
         frame.setTitle("Tic Tac Toe!");
@@ -38,8 +39,22 @@ public class GameWindow {
         frame.setSize(400, 400);
         makeButtons(gameBoard);
         frame.setVisible(true);
+
+        UIManager ui = new UIManager();
+        ui.put("OptionPane.messageFont", new Font("Courier New", Font.BOLD, 15));
+        ui.put("OptionPane.background", Color.DARK_GRAY);
+        ui.put("OptionPane.messageForeground", Color.orange);
+
+
     }
 
+    // MODIFIES: this
+    // EFFECTS: change the font and colour of button
+    private void setFontColour(JButton button) {
+        button.setForeground(Color.orange);
+        button.setFont(font); //Sets the font
+        button.setBackground(Color.DARK_GRAY);
+    }
 
     // MODIFIES: this
     // EFFECTS: make 9 buttons for the tic tac toe game, initialize each on as blank
@@ -51,7 +66,8 @@ public class GameWindow {
                 String string = i + "" + j;
                 button.setName(string);
                 button.addActionListener(e -> buttonClicked(button));
-                button.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                button.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+                setFontColour(button);
                 panel.add(button);
             }
         }
@@ -86,7 +102,6 @@ public class GameWindow {
             }
         }
     }
-
 
 
     // EFFECTS: returns true if player with the same piece has won, false otherwise
@@ -142,8 +157,24 @@ public class GameWindow {
 
     //EFFECTS: create a pop up message box
     private void popup(String msg, String title) {
+//        JLabel label = new JLabel(msg);
+//        setStringFontColour(label);
+//        JOptionPane optionPane = new JOptionPane();
         JOptionPane.showMessageDialog(null, msg, "InfoBox: "
                 + title, JOptionPane.INFORMATION_MESSAGE);
+//        optionPane.showMessageDialog(null, msg, "InfoBox: "
+//                + title, optionPane.INFORMATION_MESSAGE);
+//        optionPane.setBackground(Color.BLACK);
+//        optionPane.setForeground(Color.ORANGE);
+//        optionPane.setFont(font);
+
+    }
+
+    private void setStringFontColour(JLabel label) {
+        Font font = new Font("Courier New", Font.BOLD, 20); //Initializes the font
+        label.setForeground(Color.orange); //Sets the color of the font
+        label.setFont(font); //Sets the font
+        label.setBackground(Color.DARK_GRAY);
     }
 
     public Player getP2() {
