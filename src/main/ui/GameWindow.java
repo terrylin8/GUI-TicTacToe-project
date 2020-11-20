@@ -157,24 +157,8 @@ public class GameWindow {
 
     //EFFECTS: create a pop up message box
     private void popup(String msg, String title) {
-//        JLabel label = new JLabel(msg);
-//        setStringFontColour(label);
-//        JOptionPane optionPane = new JOptionPane();
         JOptionPane.showMessageDialog(null, msg, "InfoBox: "
                 + title, JOptionPane.INFORMATION_MESSAGE);
-//        optionPane.showMessageDialog(null, msg, "InfoBox: "
-//                + title, optionPane.INFORMATION_MESSAGE);
-//        optionPane.setBackground(Color.BLACK);
-//        optionPane.setForeground(Color.ORANGE);
-//        optionPane.setFont(font);
-
-    }
-
-    private void setStringFontColour(JLabel label) {
-        Font font = new Font("Courier New", Font.BOLD, 20); //Initializes the font
-        label.setForeground(Color.orange); //Sets the color of the font
-        label.setFont(font); //Sets the font
-        label.setBackground(Color.DARK_GRAY);
     }
 
     public Player getP2() {
