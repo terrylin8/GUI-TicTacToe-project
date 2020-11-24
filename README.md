@@ -3,7 +3,6 @@
 ## For two players to play a set of games
 
 This **Tic Tac Toe** game will create a game board for two users to play on.
-For phase 1 of the project, this game will not show a graphic board, but texts only instead.
 The reason for designing this game is that I am a board game enthusiast myself, 
 and I *really* want to start learning how to make a board game of mine from the basic ones.
 Tic Tac Toe then came to my mind as a starting point. 
