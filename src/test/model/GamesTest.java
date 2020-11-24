@@ -5,15 +5,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 
-//test for Games
+//test for Game
 public class GamesTest {
-    private Games games;
+    private Game games;
     private Player p1;
     private Player p2;
 
     @Test
     void testConstructorNoPara() {
-        games = new Games();
+        games = new Game();
         assertFalse(games.isGameOver());
     }
 
@@ -21,7 +21,7 @@ public class GamesTest {
     void testConstructor() {
         p1 = new Player("Sam", 'x', 3);
         p2 = new Player("James", 'o', 1);
-        games = new Games(p1, p2);
+        games = new Game(p1, p2);
         assertFalse(games.isGameOver());
         assertEquals("Sam", games.getP1().getUsername());
         assertEquals("James", games.getP2().getUsername());
@@ -31,7 +31,7 @@ public class GamesTest {
     void testStartOver() {
         p1 = new Player("Sam", 'x', 3);
         p2 = new Player("James", 'o', 1);
-        games = new Games(p1, p2);
+        games = new Game(p1, p2);
         games.startOver();
         assertEquals(0, p1.score);
         assertEquals(0, p2.score);
@@ -43,7 +43,7 @@ public class GamesTest {
     void testGetPlayers() {
         p1 = new Player("Sam", 'x', 3);
         p2 = new Player("James", 'o', 1);
-        games = new Games(p1, p2);
+        games = new Game(p1, p2);
         assertEquals(p1, games.getPlayers().get(0));
         assertEquals(p2, games.getPlayers().get(1));
     }
@@ -52,7 +52,7 @@ public class GamesTest {
     void testSetGameOver(){
         p1 = new Player("Sam", 'x', 3);
         p2 = new Player("James", 'o', 1);
-        games = new Games(p1, p2);
+        games = new Game(p1, p2);
         games.setGameOver();
         assertTrue(games.isGameOver());
     }

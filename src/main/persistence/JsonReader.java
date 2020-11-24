@@ -25,7 +25,7 @@ public class JsonReader {
 
     // EFFECTS: reads game from file and returns it;
     // throws IOException if an error occurs reading data from file
-    public Games read() throws IOException {
+    public Game read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseGames(jsonObject);
@@ -44,10 +44,10 @@ public class JsonReader {
 
 
     // EFFECTS: parses game from JSON object with information of both players and returns it
-    private Games parseGames(JSONObject jsonObject) {
+    private Game parseGames(JSONObject jsonObject) {
         List<Player> players;
         players = addPlayers(jsonObject);
-        Games game = new Games(players.get(0), players.get(1));
+        Game game = new Game(players.get(0), players.get(1));
         return game;
     }
 

@@ -1,6 +1,6 @@
 package persistence;
 
-import model.Games;
+import model.Game;
 import org.json.JSONObject;
 import java.io.*;
 
@@ -24,8 +24,8 @@ public class JsonWriter {
     }
 
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of Games to file
-    public void write(Games game) {
+    // EFFECTS: writes JSON representation of Game to file
+    public void write(Game game) {
         JSONObject json = game.toJson();
         saveToFile(json.toString(TAB));
     }

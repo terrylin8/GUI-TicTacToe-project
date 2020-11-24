@@ -1,8 +1,8 @@
 package ui;
 
 import exceptions.NotInBoardException;
+import model.Game;
 import model.GameBoard;
-import model.Games;
 import model.Player;
 
 import java.awt.*;
@@ -13,7 +13,7 @@ public class GameWindow {
     private int count = 0;
     private Player p1;
     private Player p2;
-    private Games game;
+    private Game game;
     private GameBoard gameBoard;
     private static final int ROW_COL = 3;
     Font font = new Font("Courier New", Font.BOLD, 25);
@@ -22,7 +22,7 @@ public class GameWindow {
 //    JLabel label = new JLabel("Hello!");
 
     //making a new window to play the tic tac toe game
-    public GameWindow(Player p1, Player p2, Games game, GameBoard gameBoard) {
+    public GameWindow(Player p1, Player p2, Game game, GameBoard gameBoard) {
         this.p1 = p1;
         this.p2 = p2;
         this.game = game;
@@ -172,7 +172,7 @@ public class GameWindow {
         return p1;
     }
 
-    public Games getGame() {
+    public Game getGame() {
         return game;
     }
 }

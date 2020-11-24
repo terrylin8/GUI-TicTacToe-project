@@ -10,7 +10,7 @@ import java.io.IOException;
 // codes below cited from the example repo JsonSerializationDemo, JsonWriterTest class
 // tests for JsonWriter class
 public class JsonWriterTest extends JsonTest {
-    private Games game;
+    private Game game;
     private Player p1;
     private Player p2;
 
@@ -19,7 +19,7 @@ public class JsonWriterTest extends JsonTest {
         try {
             p1 = new Player("Sam", 'x', 3);
             p2 = new Player("James", 'o', 1);
-            game = new Games(p1, p2);
+            game = new Game(p1, p2);
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
             writer.open();
             fail("IOException was expected");
@@ -33,7 +33,7 @@ public class JsonWriterTest extends JsonTest {
         try {
             p1 = new Player("Sam", 'x', 3);
             p2 = new Player("James", 'o', 1);
-            game = new Games(p1, p2);
+            game = new Game(p1, p2);
             JsonWriter writer = new JsonWriter("./data/testWriterStandardGame.json");
             writer.open();
             writer.write(game);

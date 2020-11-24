@@ -25,7 +25,13 @@ Tic Tac Toe then came to my mind as a starting point.
 
 - As a user, I want to be able to reload the player information stored
 
-- "Phase 4: Task 2", the class GameBoard and method putPiece() is now robust with a NotInBoardException
+- Phase 4: Task 2: the class GameBoard and method putPiece() is now robust with a NotInBoardException 
+handling exceptions when putPiece() try to place pieces out of the array range of GameBoard
   - GameBoard.putPiece()
-
-the classes and methods in that play a role in this task 
+  
+- Phase 4: Task 3: If I had more time for this project, I would merge Game into GameBoard
+ since I find the Game class quite redundant after drawing the UML diagram. I realized that
+the Game class would only ever have 2 players in it and both classes (GUI and GameWindow) 
+that are associated with Game have 2 players in them already. The removal of the Game class 
+while combining its functionality into the GameBoard class would improve my design by 
+simplifying it.  

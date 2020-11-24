@@ -12,7 +12,7 @@ import persistence.*;
 public class TicTacToeApp {
     private Player p1;
     private Player p2;
-    private Games game;
+    private Game game;
     private GameBoard gameBoard;
     private static final int ROW_COL = 3;
     private Scanner input = new Scanner(System.in);
@@ -76,7 +76,7 @@ public class TicTacToeApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes Player, Games, and gameBoard
+    // EFFECTS: initializes Player, Game, and gameBoard
     private void init() {
         String name1;
         String name2;
@@ -93,7 +93,7 @@ public class TicTacToeApp {
         p2 = new Player(name2, 'X', 0);
 
         //initializes games
-        game = new Games(p1, p2);
+        game = new Game(p1, p2);
 
         //initializes game board
         gameBoard = new GameBoard(ROW_COL, ROW_COL);

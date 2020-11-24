@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 // game status of the tic tac toe game
-public class Games implements Writable {
+public class Game implements Writable {
     private Player p1;
     private Player p2;
 
@@ -16,13 +16,13 @@ public class Games implements Writable {
 
     //making a new game
     //EFFECTS: gameOver is not false in the newly created game
-    public Games() {
+    public Game() {
         gameOver = false;
     }
 
     //making a new game
     //EFFECTS: gameOver is not false in the newly created game with players p1 p2
-    public Games(Player p1, Player p2) {
+    public Game(Player p1, Player p2) {
         this.p1 = p1;
         this.p2 = p2;
         gameOver = false;

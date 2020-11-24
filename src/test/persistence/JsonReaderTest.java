@@ -14,7 +14,7 @@ public class JsonReaderTest extends JsonTest{
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
-            Games game = reader.read();
+            Game game = reader.read();
             fail("IOException expected");
         } catch (IOException e) {
             // pass
@@ -25,7 +25,7 @@ public class JsonReaderTest extends JsonTest{
     void testReaderEmptyWorkRoom() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyWorkRoom.json");
         try {
-            Games game = reader.read();
+            Game game = reader.read();
             fail("Can load game with no players");
         } catch (IOException e) {
             //expected
@@ -36,7 +36,7 @@ public class JsonReaderTest extends JsonTest{
     void testReaderGeneralWorkRoom() {
         JsonReader reader = new JsonReader("./data/testReaderStandardGame.json");
         try {
-            Games game = reader.read();
+            Game game = reader.read();
             List<Player> players = game.getPlayers();
             assertEquals(2, game.getPlayers().size());
             checkPlayer(game.getPlayers().get(0),"A", '%', 0);

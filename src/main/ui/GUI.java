@@ -1,14 +1,13 @@
 package ui;
 
+import model.Game;
 import model.GameBoard;
-import model.Games;
 import model.Player;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
-import javax.imageio.ImageIO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -20,7 +19,7 @@ public class GUI implements ActionListener {
     private Player p2;
     private String name1;
     private String name2;
-    private Games game;
+    private Game game;
     private GameBoard gameBoard;
     private static final int ROW_COL = 3;
     private JsonWriter jsonWriter;
@@ -70,7 +69,7 @@ public class GUI implements ActionListener {
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes Player, Games, and gameBoard
+    // EFFECTS: initializes Player, Game, and gameBoard
     private void init() {
         Icon image = new ImageIcon("./data/tictactoe.jpeg");
         UIManager ui = new UIManager();
@@ -95,8 +94,8 @@ public class GUI implements ActionListener {
         p1 = new Player(name1, 'O', 0);
         p2 = new Player(name2, 'X', 0);
 
-        //initializes games
-        game = new Games(p1, p2);
+        //initializes game
+        game = new Game(p1, p2);
 
         //initializes game board
         gameBoard = new GameBoard(ROW_COL, ROW_COL);
