@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
+import exceptions.NotInBoardException;
 import model.*;
 import persistence.*;
 
@@ -194,7 +195,11 @@ public class TicTacToeApp {
         row = input.nextInt();
         System.out.println(p.username + " please enter the column of your next move");
         col = input.nextInt();
-        gameBoard.putPiece(row, col, p.getIcon());
+        try {
+            gameBoard.putPiece(row, col, p.getIcon());
+        } catch (NotInBoardException e) {
+            e.printStackTrace();
+        }
     }
 
     // EFFECTS: returns true if player with the same piece has won, false otherwise

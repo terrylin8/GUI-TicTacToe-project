@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.NotInBoardException;
 import model.GameBoard;
 import model.Games;
 import model.Player;
@@ -74,32 +75,34 @@ public class GameWindow {
     }
 
     // MODIFIES: this
-    // EFFECTS: use count to keep tract of which player's turn it is
-    // place a piece onto the appropriate position on the board
-    // check of a player has won
+    // EFFECTS: use count to keep tract of which player's turn it is and let the player make a move
+
     private void buttonClicked(JButton button) {
         if (button.getText().equals("") && !game.gameOver) {
             count++;
             int row = Character.getNumericValue(button.getName().charAt(0));
             int col = Character.getNumericValue(button.getName().charAt(1));
             if (count % 2 == 0) {
-                gameBoard.putPiece(row, col, p2.getIcon());
-                button.setText(String.valueOf(p2.getIcon()));
-                if (winCheck(p2)) {
-                    popup(p2.getUsername() + " you win!", "Congratulations!");
-                    game.setGameOver();
-                    p2.addScore();
-                }
+                makeMove(row, col, p2, button);
             }
             if (count % 2 == 1) {
-                gameBoard.putPiece(row, col, p1.getIcon());
-                button.setText(String.valueOf(p1.getIcon()));
-                if (winCheck(p1)) {
-                    popup(p1.getUsername() + " you win!", "Congratulations!");
-                    game.setGameOver();
-                    p1.addScore();
-                }
+                makeMove(row, col, p1, button);
             }
+        }
+    }
+
+    // EFFECTS: place a piece onto the appropriate position on the board and check if a player has won
+    private void makeMove(int row, int col, Player p, JButton button) {
+        try {
+            gameBoard.putPiece(row, col, p.getIcon());
+        } catch (NotInBoardException e) {
+            e.printStackTrace();
+        }
+        button.setText(String.valueOf(p.getIcon()));
+        if (winCheck(p)) {
+            popup(p.getUsername() + " you win!", "Congratulations!");
+            game.setGameOver();
+            p.addScore();
         }
     }
 

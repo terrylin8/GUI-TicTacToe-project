@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.NotInBoardException;
+
 //creating a GameBoard with pieces on it
 public class GameBoard {
     private int row;
@@ -27,9 +29,15 @@ public class GameBoard {
     //putting down pieces on the board
     //REQUIRES: row and column are both non negative int
     //MODIFIES: this
-    //EFFECTS: put down the piece on to the board on (row, column)
-    public void putPiece(int row, int column, char icon) {
+    //EFFECTS: put down the piece on to the board on (row, column) and throw NotInBoardException when needed
+    public void putPiece(int row, int column, char icon) throws NotInBoardException {
         Piece piece = new Piece(icon);
+        if (column > this.getColumn()) {
+            throw new NotInBoardException("Column not found");
+        }
+        if (row > this.getRow()) {
+            throw new NotInBoardException("Row not found");
+        }
         board[row][column] = piece;
     }
 

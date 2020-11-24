@@ -10,7 +10,7 @@ Tic Tac Toe then came to my mind as a starting point.
 
 ##*User Stories*:
 - As a user, I want to be able to add pieces to the game board //adding multiple Xs to a Y
-  - gameBoard.putPiece()
+  - GameBoard.putPiece()
   
 - As a user, I want to be able to set the icon of my piece to anything other than default 
   - Player.setIcon()
@@ -25,5 +25,7 @@ Tic Tac Toe then came to my mind as a starting point.
 
 - As a user, I want to be able to reload the player information stored
 
-- *Extra idea for later on*: adding more grid to expand the game into something like **Gobang** 
-where you connect 5 pieces in line to win
+- "Phase 4: Task 2", the class GameBoard and method putPiece() is now robust with a NotInBoardException
+  - GameBoard.putPiece()
+
+the classes and methods in that play a role in this task 
