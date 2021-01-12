@@ -2,7 +2,7 @@
 
 ## For two players to play a set of games
 
-This **Tic Tac Toe** game will create a game board for two users to play on.
+This **Tic Tac Toe** game allows two users to have a few rounds of mini games and save their scores.
 The reason for designing this game is that I am a board game enthusiast myself, 
 and I *really* want to start learning how to make a board game of mine from the basic ones.
 Tic Tac Toe then came to my mind as a starting point. 
