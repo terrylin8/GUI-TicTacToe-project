@@ -19,7 +19,6 @@ public class GameWindow {
     Font font = new Font("Courier New", Font.BOLD, 25);
     JFrame frame = new JFrame();
     JPanel panel = new JPanel();
-//    JLabel label = new JLabel("Hello!");
 
     //making a new window to play the tic tac toe game
     public GameWindow(Player p1, Player p2, Game game, GameBoard gameBoard) {
